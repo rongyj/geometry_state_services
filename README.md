@@ -11,13 +11,16 @@ Part Two: Next is a service that will consume that endpoint and tell us which st
 Some simplified geometries are included in states.json (so greatly simplified,
 that some of the smaller ones disappear).
 
-## Expected Behavior
+### Expected Behavior
+$ ./state-server &
 
-  $ ./state-server &
-  $ ./endpoint-server &
-  $ curl  -d "longitude=-77.036133&latitude=40.513799" http://localhost:8080/
-  ["Pennsylvania"]
-  $
+$ ./endpoint-server &
+
+$ curl  -d "longitude=-77.036133&latitude=40.513799" http://localhost:8080/
+  
+["Pennsylvania"]
+
+$
 
 #Solution and Design considerations:
 ##Design considerations:
