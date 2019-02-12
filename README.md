@@ -1,5 +1,5 @@
 # geometric_state_service
-REST services to determine the state name by giving the coordinate of the point (longitude, altitude)
+REST services to determine the state name by giving the coordinate of the point (longitude, latitude)
 
 #Problem and Requirements:
 ## State Server!
@@ -39,6 +39,8 @@ Flask a lightweight python RESTful framework can be used for enterprise producti
 Django RESTFul framework can take advantages of the features of Django itself. It is good for large scale of REST services which require versioning support and ORM.(may just create skeleton for future extension if have time)
 
 # Running instructions:
+
+## Running from python3 environment
  Requirement:  Python3
 ### Steps:
 1. git clone https://github.com/rongyj/geometry_state_services.git
@@ -49,3 +51,17 @@ Django RESTFul framework can take advantages of the features of Django itself. I
 6. curl  -d "longitude=-77.036133&latitude=40.513799" http://localhost:8080/
 
 You have to manually kill the two python processes after the test.
+
+## Running from Docker environment
+There two ways to run it from docker env
+### Pull the built-in image from docker hub and run it
+1. docker pull rongyj/python3-geometry-states-services
+2. docker run -d -it --name python3 -p 8080:8080 rongyj/python3-geometry-states-services
+3. curl  -d "longitude=-77.036133&latitude=40.513799" http://localhost:8080/
+
+### Build your own docker image from the git repo
+1. git clone https://github.com/rongyj/geometry_state_services.git
+2. cd geometry_state_services.git
+3. docker build -t rongyj/python3-geometry-states-services . (change the "rongyj" to your docker hub user name)
+4. docker run -d -it --name python3 -p 8080:8080 rongyj/python3-geometry-states-services (replace the docker image name with the name your just build in the above step)
+5. curl  -d "longitude=-77.036133&latitude=40.513799" http://localhost:8080/

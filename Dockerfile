@@ -6,6 +6,5 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
-
-CMD ./states-services.sh
+CMD /usr/src/app/states-services.sh
 
