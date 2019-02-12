@@ -1,0 +1,2 @@
+#!/bin/bash
+python3 -m services.http.endpoint 8080
