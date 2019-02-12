@@ -48,4 +48,4 @@ $
 5. ./endpoint-server &
 6. curl  -d "longitude=-77.036133&latitude=40.513799" http://localhost:8080/
 
-You have manually kill the two python processes after the test.
+You have to manually kill the two python processes after the test.
