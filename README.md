@@ -1,7 +1,7 @@
 # geometric_state_service
 REST services to determine the state name by giving the coordinate of the point (longitude, latitude)
 
-#Problem and Requirements:
+# Problem and Requirements:
 ## State Server!
 Part One: Please create a server and an endpoint that will serve geometries that are included in states.json file.
 
@@ -22,8 +22,8 @@ $ curl  -d "longitude=-77.036133&latitude=40.513799" http://localhost:8080/
 
 $
 
-#Solution and Design considerations:
-##Design considerations:
+# Solution and Design considerations:
+## Design considerations:
 #### Why do we need separate the state-server and the endpoint-server?
 From business perspective, it might not be necessary to separate these two functions (1. read states.json to create the geometries for states, 2.finding the state of a giving point) into two different process. Function No.2 is really tightly coupled with Function No.1. It is also not very efficient to pass the json/dictionary object crossing two different processes.
 But it is a good design if we are thinking to scale different services for different level of scalability requirements. In this case, the states geometris (state-server) can be cached in somewhere (ElasticCache, Reddis or NoSQL stores..etc). The endpoint-server can scale horizontally to meet the different level of scalability requirements.
