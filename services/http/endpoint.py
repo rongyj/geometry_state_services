@@ -13,7 +13,6 @@ from urllib.request import urlopen
 class StateEndpointHTTPRequestHandler(BaseHTTPRequestHandler):
 
     states=None
-    DEFAULT_STATES_SERVICE_URL="http://localhost:9090/states"
 
     def _set_headers(self, response_code=200, content_type='application/json'):
         '''
@@ -124,7 +123,7 @@ class StateEndpointHTTPRequestHandler(BaseHTTPRequestHandler):
         :return: cache the dictionary of states in the format {["state_ame":[[],[],...],...} with state name as the key and border points as the value array
         '''
         if StateEndpointHTTPRequestHandler.states is None:
-            StateEndpointHTTPRequestHandler.states = json.loads(json.loads(urlopen(self.DEFAULT_STATES_SERVICE_URL).read()).replace("'", "\""))
+            StateEndpointHTTPRequestHandler.states = json.loads(json.loads(urlopen("http://localhost:9595/states").read()).replace("'", "\""))
         return StateEndpointHTTPRequestHandler.states
 
 
@@ -162,7 +161,7 @@ def run(server_class=HTTPServer, handler_class=StateEndpointHTTPRequestHandler, 
     '''
     Starts the HTTPServer with StateEndpointHTTPRequestHandler at the given port (default: 8080)
     '''
-    server_address = (socket.gethostbyname(socket.gethostname()), port)
+    server_address = ("0.0.0.0", port)
     http_server = server_class(server_address, handler_class)
     print('Starting Endpoint HTTP server...')
     http_server.serve_forever()

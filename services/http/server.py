@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.7
 
 
-import sys,json
+import sys,json, socket
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 import services.model.states
@@ -70,11 +70,11 @@ class StatesHTTPRequestHandler(BaseHTTPRequestHandler):
 
 
 
-def run(server_class=HTTPServer, handler_class=StatesHTTPRequestHandler, port=9090):
+def run(server_class=HTTPServer, handler_class=StatesHTTPRequestHandler, port=9595):
     '''
     Starts the HTTPServer with StatesHTTPRequestHandler at the given port (default: 8080)
     '''
-    server_address = (socket.gethostbyname(socket.gethostname()), port)
+    server_address = ("0.0.0.0", port)
     http_server = server_class(server_address, handler_class)
 
     print('Starting State HTTP server...')

@@ -18,7 +18,7 @@ class StateEndpointHTTPRequestTestSuite(unittest.TestCase):
 
 
     def test_endpoint_request(self):
-        server = HTTPServer((socket.gethostbyname(socket.gethostname()), 9090), services.http.server.StatesHTTPRequestHandler)
+        server = HTTPServer((socket.gethostbyname(socket.gethostname()), 9595), services.http.server.StatesHTTPRequestHandler)
         server_thread = threading.Thread(target=server.serve_forever)
         # Also tried this:
         # server_thread.setDaemon(True)
