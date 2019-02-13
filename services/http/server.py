@@ -74,7 +74,7 @@ def run(server_class=HTTPServer, handler_class=StatesHTTPRequestHandler, port=90
     '''
     Starts the HTTPServer with StatesHTTPRequestHandler at the given port (default: 8080)
     '''
-    server_address = ('127.0.0.1', port)
+    server_address = (socket.gethostbyname(socket.gethostname()), port)
     http_server = server_class(server_address, handler_class)
 
     print('Starting State HTTP server...')

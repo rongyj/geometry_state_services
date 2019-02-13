@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.7
 
-import sys, getopt, json
+import sys, getopt, json, socket
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from shapely.geometry import Point, Polygon
 
@@ -162,7 +162,7 @@ def run(server_class=HTTPServer, handler_class=StateEndpointHTTPRequestHandler, 
     '''
     Starts the HTTPServer with StateEndpointHTTPRequestHandler at the given port (default: 8080)
     '''
-    server_address = ('127.0.0.1', port)
+    server_address = (socket.gethostbyname(socket.gethostname()), port)
     http_server = server_class(server_address, handler_class)
     print('Starting Endpoint HTTP server...')
     http_server.serve_forever()
